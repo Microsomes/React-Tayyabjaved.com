@@ -1,0 +1,29 @@
+h1{
+    font-size: 30px;
+}
+
+pre{
+     display:flex;
+    align-items: center;;
+    justify-content: center;
+    font-size: 30px;
+}
+
+#introImageContainer{
+    min-height:200px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:100px;
+    flex-flow: column;
+    
+}
+#introImageContainer h2{
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+#introImageContainer img{
+     width: 70%;
+
+}
