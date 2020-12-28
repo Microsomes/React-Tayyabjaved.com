@@ -5,9 +5,38 @@ import './index.css';
 
 import Home from './views/home/homeHook'
 
+
+import HomeTooMany from './views/apps/TooMany/src/views/home/HomeTooMany'
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+
+        <Route exact path="/toomanyfacts">
+          <HomeTooMany></HomeTooMany>
+        </Route>
+
+      </Switch>
+
+
+    </Router>
+  
+  
+  
   </React.StrictMode>,
   document.getElementById('root')
 );

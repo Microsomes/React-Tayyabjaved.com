@@ -20,6 +20,10 @@ function BasicNav() {
       name: "Projects",
       className: "noselect",
     },
+    {
+        name: "Account",
+        className: "noselect",
+      },
   ]);
 
   /////////////////////////////////////////////- functions
