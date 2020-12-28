@@ -1,0 +1,35 @@
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 24px 4d0px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: #3cbc8d;
+  color: white;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  font-weight: bold;
+  opacity: 1; /* Firefox */
+}
+
+#statusP {
+  margin-bottom: 5px;
+}
+
+
+.ERR{
+    padding:20px;
+    border:5px solid red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.OK{
+    padding:20px;
+    border:5px solid green;
+    font-weight: bold;
+    font-size: 20px;
+}

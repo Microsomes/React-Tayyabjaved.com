@@ -2,21 +2,28 @@ import { useState } from "react";
 
 import axios from "axios";
 
+import "./signUp.css"
+
 function SignUp() {
+  const [formStatus, setFormStatus] = useState({
+      type:null,
+      value:null
+  });
+
   const [formData, setFormData] = useState({
     username: {
       id: "username",
-      value: "dd",
+      value: "",
       type: "text",
     },
     email: {
       id: "email",
-      value: "dd",
+      value: "",
       type: "text",
     },
     password: {
       id: "password",
-      value: "c",
+      value: "",
       type: "password",
     },
   });
@@ -29,13 +36,23 @@ function SignUp() {
     var newAccountResponse = await axios.post(
       "https://api.maeplet.com/auth/newUser",
       {
-        username: "chris123",
-        password: "tayyab123",
-        email: "tayyan54@gmail.com",
+        username: formData.username.value,
+        password: formData.password.value,
+        email: formData.email.value,
       }
     );
 
-    console.log(newAccountResponse)
+    if (newAccountResponse.data.status == "ERR") {
+      setFormStatus({
+          value:newAccountResponse.data.msg,
+          type:"ERR"
+      });
+    }else{
+        setFormStatus({
+            value:newAccountResponse.data.msg,
+            type:"OK"
+        });
+    }
   }
 
   function handleFormUpdate(e, key) {
@@ -63,7 +80,10 @@ function SignUp() {
   const inputItem = Object.keys(formData).map((keyName, i) => (
     //    <div>{JSON.stringify(formData[keyName].type)}</div>
 
-    <>
+    <div style={{marginTop:'10px'}}>
+    <label>
+        ({formData[keyName].id})
+    </label>
       <input
         type={formData[keyName].type}
         value={formData[keyName].value}
@@ -71,22 +91,20 @@ function SignUp() {
           handleFormUpdate(e, formData[keyName].id);
         }}
       ></input>
-    </>
+    </div>
   ));
 
   return (
     <form onSubmit={createAccount}>
       <h1>Create an account</h1>
-      {inputItem}
-      {/* <input
-        onChange={(e) => {
-          handleFormUpdate(e, "username");
-        }}
-        value={formData.username.value}
-        name="username"
-        type="text"
-        placeholder="username"
-      ></input> */}
+      
+        {inputItem}
+
+    
+    {/*STATUS VALUE */}
+     <p className={formStatus.type} id="statusP">{formStatus.value}</p>
+    {/*STATUS VALUE */}
+
 
       <input type="submit"></input>
     </form>
