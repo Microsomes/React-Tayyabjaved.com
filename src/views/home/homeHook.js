@@ -19,7 +19,7 @@ function Home(){
 
             <BasicNav></BasicNav>
 
-                <pre>NULL, UNDEFINED=>TAYYAB</pre>
+                <pre>NULL, UNDEFINED=TAYYAB</pre>
 
  
                 <IntroComp></IntroComp>
