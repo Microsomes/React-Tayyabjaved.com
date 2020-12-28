@@ -25,6 +25,8 @@ input[type="password"] {
     border:5px solid red;
     font-weight: bold;
     font-size: 20px;
+    word-break: break-all;
+    overflow: hidden;
 }
 
 .OK{
