@@ -36,7 +36,14 @@ function SignIn() {
       }
     );
 
-    console.log(SignInResponse.data);
+    if (formData.username.value.length == 0) {
+      setFormStatus({
+        type: "ERR",
+        value:
+          "Invalid username although technically valid, we wont allow the front end to accept this. Psst, you can use the api if you want to interact with a blank account.",
+      });
+      return;
+    }
 
     if (SignInResponse.data.status == "ERR") {
       setFormStatus({
@@ -44,6 +51,8 @@ function SignIn() {
         type: "ERR",
       });
     } else {
+         localStorage.setItem("token",SignInResponse.data.token)
+        console.log(SignInResponse.data.details)
       setFormStatus({
         value:
           "Logged in as " +
@@ -71,8 +80,6 @@ function SignIn() {
   }
 
   const inputItem = Object.keys(formData).map((keyName, i) => (
-    //    <div>{JSON.stringify(formData[keyName].type)}</div>
-
     <div style={{ marginTop: "10px" }}>
       <label>({formData[keyName].id})</label>
       <input
